@@ -271,7 +271,7 @@ void CtestMqttDlg::OnBnClickedBtnConnect()
 	CString strServerAddr;
 	GetDlgItem(IDC_EDIT_SERVER_ADDR)->GetWindowText(strServerAddr);
 	CString strClientID;
-	GetDlgItem(IDC_EDIT_SERVER_ADDR)->GetWindowText(strClientID);
+	GetDlgItem(IDC_EDIT_CLIENT_ID)->GetWindowText(strClientID);
 	MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
 	int rc;
 	MQTTClient_create(&client, ConverCStringToStdString(strServerAddr).c_str(), ConverCStringToStdString(strClientID).c_str(), MQTTCLIENT_PERSISTENCE_NONE, NULL);
