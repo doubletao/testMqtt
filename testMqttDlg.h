@@ -46,4 +46,5 @@ protected:
 public:
 	void PushMsg(CString strMsg);
 	CString PopMsg();
+	afx_msg void OnBnClickedBtnClearSend();
 };

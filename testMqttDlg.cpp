@@ -122,6 +122,7 @@ BEGIN_MESSAGE_MAP(CtestMqttDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_UNSUB_THEME, &CtestMqttDlg::OnBnClickedBtnUnsubTheme)
 	ON_BN_CLICKED(IDC_BTN_SEND, &CtestMqttDlg::OnBnClickedBtnSend)
 	ON_MESSAGE(WM_USER_MESSAGE_MSG_ARRIVE, &CtestMqttDlg::OnMsgArrive)
+	ON_BN_CLICKED(IDC_BTN_CLEAR_SEND, &CtestMqttDlg::OnBnClickedBtnClearSend)
 END_MESSAGE_MAP()
 
 
@@ -300,7 +301,7 @@ void CtestMqttDlg::OnBnClickedBtnUnsubTheme()
 	if (client)
 	{
 		CString strTheme;
-		GetDlgItem(IDC_EDIT_SUB_THEME)->GetWindowText(strTheme);
+		GetDlgItem(IDC_EDIT_UNSUB_THEME)->GetWindowText(strTheme);
 		MQTTClient_unsubscribe(client, ConverCStringToStdString(strTheme).c_str());
 	}
 }
@@ -351,4 +352,10 @@ CString CtestMqttDlg::PopMsg()
 	m_queMsg.pop();
 	LeaveCriticalSection(&m_Lock);
 	return strRet;
+}
+
+
+void CtestMqttDlg::OnBnClickedBtnClearSend()
+{
+	GetDlgItem(IDC_EDIT_RECV_CONTENT)->SetWindowText(_T(""));
 }
